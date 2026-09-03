@@ -122,11 +122,13 @@ c:\xampp\htdocs\ai_pos_system\
 - Web server (**Apache** via XAMPP or PHP built-in server).
 
 ### 1. Database Initialization
-The database configuration is in `config/database.php`. By default, it connects to:
+The database configuration is in `.env` (copy `.env.example` if needed). By default, it connects to:
 - **Host**: `127.0.0.1`
 - **Port**: `3307` *(with auto-fallback to `3306`)*
 - **User**: `root`
-- **Password**: `derricklim12345` *(or leave blank if using default XAMPP)*
+- **Password**: empty *(set `DB_PASS` in `.env` if your MySQL user has a password)*
+
+For Gemini outside the Admin Settings page, set `GEMINI_API_KEY` in `.env`. The database value saved from Admin Settings takes precedence when present. Never commit `.env`.
 
 To initialize the database, tables, and sample catalog:
 **Option A (Command Line):**

@@ -4,12 +4,34 @@
  * AI Camera POS System
  */
 
+// Load local environment values without requiring Composer or a framework.
+$envFile = __DIR__ . '/../.env';
+if (is_readable($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $line = trim($line);
+        if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {
+            continue;
+        }
+
+        [$name, $value] = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+        if ($value !== '' && (($value[0] ?? '') === '"' || ($value[0] ?? '') === "'")) {
+            $value = trim($value, "\"'");
+        }
+
+        if ($name !== '' && getenv($name) === false) {
+            putenv($name . '=' . $value);
+        }
+    }
+}
+
 // Database credentials
 define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
 define('DB_PORT', getenv('DB_PORT') ?: '3307'); // Defaulting to 3307 for this environment
 define('DB_NAME', getenv('DB_NAME') ?: 'ai_pos_system');
 define('DB_USER', getenv('DB_USER') ?: 'root');
-define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : 'derricklim12345');
+define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 
 /**
  * Get PDO Database Connection

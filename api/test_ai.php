@@ -15,8 +15,8 @@ if (!is_admin()) {
     exit;
 }
 
-$apiKey = trim($_POST['api_key'] ?? '') ?: get_setting('gemini_api_key', '');
-$model = trim($_POST['model'] ?? '') ?: get_setting('gemini_model', 'gemini-3.7-flash');
+$apiKey = trim($_POST['api_key'] ?? '') ?: get_setting('gemini_api_key', '') ?: (getenv('GEMINI_API_KEY') ?: '');
+$model = trim($_POST['model'] ?? '') ?: get_setting('gemini_model', '') ?: (getenv('GEMINI_MODEL') ?: 'gemini-3.7-flash');
 
 if (empty($apiKey)) {
     echo json_encode(['success' => false, 'message' => 'Gemini API Key is empty. Please enter an API key.']);
