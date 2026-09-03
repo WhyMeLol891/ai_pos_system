@@ -16,10 +16,7 @@ No third-party PHP frameworks (Laravel, Symfony, etc.) are used.
 
 2. **Gemini Model Flexibility**:
    - Choose between top vision models directly from Admin Settings:
-     - `gemini-3.7-flash` *(Recommended for fast multimodal vision)*
-     - `gemini-3.5-flash-lite` *(Ultra-fast, low latency)*
-     - `gemini-3.1-flash-lite` *(Lightweight)*
-     - `gemini-2.5-flash` *(Fallback)*
+   - `gemini-3.6-flash` *(Recommended for fast multimodal vision)*
    - Built-in interactive **"Test AI Connection"** button with live latency indicator.
 
 3. **Dual User Roles**:
@@ -170,7 +167,7 @@ You can log in manually or click the **"Quick Demo Login"** buttons on the login
 1. Log in as **Admin** (`admin` / `admin123`).
 2. Go to **AI & Settings** in the top navigation bar (`/admin/settings.php`).
 3. Under **Google Gemini AI Camera Engine**:
-   - **Select AI Model**: Choose `gemini-3.7-flash` (recommended), `gemini-3.5-flash-lite`, or `gemini-3.1-flash-lite`.
+   - **Select AI Model**: Choose `gemini-3.6-flash` (recommended).
    - **Gemini API Key**: Paste your Google Gemini API key.
      - *How to get a free API key:*
        1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey).
@@ -179,7 +176,7 @@ You can log in manually or click the **"Quick Demo Login"** buttons on the login
 4. Click the **"Test Connection"** button. The system will ping Gemini and show:
    ```
    ✓ Connection Successful!
-   Model: gemini-3.7-flash | Latency: 480 ms
+   Model: gemini-3.6-flash | Latency: 480 ms
    AI response: "AI POS Engine Ready."
    ```
 5. Click **"Save All Settings"**.
@@ -259,7 +256,7 @@ php tests/test_system.php
 [PASS] Cashier password 'cashier123' verifies against hash
 [PASS] Settings 'shop_name' is configured: AI SMART MART
 [PASS] Settings 'currency_symbol' is configured: RM
-[PASS] Settings 'gemini_model' is configured: gemini-3.7-flash
+[PASS] Settings 'gemini_model' is configured: gemini-3.6-flash
 [PASS] Catalog has at least 10 active products (found: 14)
 [PASS] Sample product 'Coca-Cola Can 320ml' (BEV-001) exists
 [PASS] Product image exists on disk: assets/uploads/products/coca_cola.svg

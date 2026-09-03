@@ -20,7 +20,10 @@ $pdo = get_db_connection();
 
 // 1. Get Gemini Settings
 $apiKey = get_setting('gemini_api_key', '') ?: (getenv('GEMINI_API_KEY') ?: '');
-$model = get_setting('gemini_model', '') ?: (getenv('GEMINI_MODEL') ?: 'gemini-3.7-flash');
+$model = get_setting('gemini_model', '') ?: (getenv('GEMINI_MODEL') ?: 'gemini-3.6-flash');
+if (in_array($model, ['gemini-3.7-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-2.5-flash'], true)) {
+    $model = 'gemini-3.6-flash';
+}
 
 if (empty($apiKey)) {
     echo json_encode([
@@ -154,7 +157,9 @@ if ($curlError) {
 $decoded = json_decode($apiResponse, true);
 
 if ($httpCode !== 200 || !isset($decoded['candidates'][0]['content']['parts'][0]['text'])) {
-    $errorMsg = $decoded['error']['message'] ?? "Gemini API error (HTTP {$httpCode}).";
+    $errorMsg = $decoded['error']['message']
+        ?? ($decoded['promptFeedback']['blockReason'] ?? null)
+        ?? "Gemini returned no usable response (HTTP {$httpCode}).";
     echo json_encode([
         'success' => false,
         'message' => $errorMsg,

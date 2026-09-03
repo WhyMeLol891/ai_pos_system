@@ -143,6 +143,6 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('shop_phone', '+60 12-345 6789'),
 ('currency_symbol', 'RM'),
 ('gemini_api_key', ''),
-('gemini_model', 'gemini-3.7-flash'),
+('gemini_model', 'gemini-3.6-flash'),
 ('low_stock_threshold', '5'),
 ('receipt_footer', 'Thank you for shopping with AI Smart Mart! Please come again.');

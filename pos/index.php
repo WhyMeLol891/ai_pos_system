@@ -13,7 +13,7 @@ require_login();
 $pdo = get_db_connection();
 $categories = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
 $currency = get_setting('currency_symbol', 'RM');
-$geminiModel = get_setting('gemini_model', 'gemini-3.7-flash');
+$geminiModel = get_setting('gemini_model', 'gemini-3.6-flash');
 
 require_once __DIR__ . '/../includes/header.php';
 ?>

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lowStockThreshold = max(1, (int)($_POST['low_stock_threshold'] ?? 5));
         
         $geminiApiKey = trim($_POST['gemini_api_key'] ?? '');
-        $geminiModel = trim($_POST['gemini_model'] ?? 'gemini-3.7-flash');
+        $geminiModel = trim($_POST['gemini_model'] ?? 'gemini-3.6-flash');
         $customModel = trim($_POST['custom_model'] ?? '');
         if ($geminiModel === 'custom' && !empty($customModel)) {
             $geminiModel = $customModel;
@@ -54,7 +54,7 @@ $currencySymbol = get_setting('currency_symbol', 'RM');
 $receiptFooter = get_setting('receipt_footer', 'Thank you for shopping with us! Please come again.');
 $lowStockThreshold = get_setting('low_stock_threshold', '5');
 $geminiApiKey = get_setting('gemini_api_key', '');
-$geminiModel = get_setting('gemini_model', 'gemini-3.7-flash');
+$geminiModel = get_setting('gemini_model', 'gemini-3.6-flash');
 
 require_once __DIR__ . '/../includes/header.php';
 ?>
@@ -88,19 +88,10 @@ require_once __DIR__ . '/../includes/header.php';
                         <i class="bi bi-robot me-1 text-primary"></i> Selected AI Model <span class="text-danger">*</span>
                     </label>
                     <select class="form-select form-select-lg" id="gemini_model" name="gemini_model" onchange="toggleCustomModel(this.value)">
-                        <option value="gemini-3.7-flash" <?= $geminiModel === 'gemini-3.7-flash' ? 'selected' : '' ?>>
-                            gemini-3.7-flash (Latest, Recommended for fast vision)
+                        <option value="gemini-3.6-flash" <?= $geminiModel === 'gemini-3.6-flash' ? 'selected' : '' ?>>
+                            gemini-3.6-flash (Latest, Recommended for fast vision)
                         </option>
-                        <option value="gemini-3.5-flash-lite" <?= $geminiModel === 'gemini-3.5-flash-lite' ? 'selected' : '' ?>>
-                            gemini-3.5-flash-lite (Ultra-fast, low latency)
-                        </option>
-                        <option value="gemini-3.1-flash-lite" <?= $geminiModel === 'gemini-3.1-flash-lite' ? 'selected' : '' ?>>
-                            gemini-3.1-flash-lite (Lightweight model)
-                        </option>
-                        <option value="gemini-2.5-flash" <?= $geminiModel === 'gemini-2.5-flash' ? 'selected' : '' ?>>
-                            gemini-2.5-flash (Standard fallback)
-                        </option>
-                        <option value="custom" <?= (!in_array($geminiModel, ['gemini-3.7-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-2.5-flash'])) ? 'selected' : '' ?>>
+                        <option value="custom" <?= $geminiModel !== 'gemini-3.6-flash' ? 'selected' : '' ?>>
                             Custom Model Name...
                         </option>
                     </select>
@@ -108,7 +99,7 @@ require_once __DIR__ . '/../includes/header.php';
                 </div>
 
                 <!-- Custom model input if needed -->
-                <div class="mb-4 <?= (!in_array($geminiModel, ['gemini-3.7-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-2.5-flash'])) ? '' : 'd-none' ?>" id="customModelGroup">
+                <div class="mb-4 <?= $geminiModel !== 'gemini-3.6-flash' ? '' : 'd-none' ?>" id="customModelGroup">
                     <label for="custom_model" class="form-label fw-semibold">Custom Model Identifier</label>
                     <input type="text" class="form-control font-monospace" id="custom_model" name="custom_model" value="<?= clean($geminiModel) ?>" placeholder="e.g. gemini-1.5-flash">
                 </div>

@@ -9,7 +9,7 @@
         </div>
         <div>
             <span class="badge bg-secondary-subtle text-secondary border me-2">
-                <i class="bi bi-cpu me-1"></i> <?= clean(get_setting('gemini_model', 'gemini-3.7-flash')) ?>
+                <i class="bi bi-cpu me-1"></i> <?= clean(get_setting('gemini_model', 'gemini-3.6-flash')) ?>
             </span>
             <span class="text-success"><i class="bi bi-circle-fill" style="font-size: 0.55rem;"></i> System Online</span>
         </div>
