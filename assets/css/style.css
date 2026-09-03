@@ -1,0 +1,251 @@
+/**
+ * Custom Styles for AI Camera POS System
+ */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #475569;
+    --accent-camera: #8b5cf6;
+    --accent-success: #10b981;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+}
+
+/* Card Improvements */
+.card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    font-weight: 600;
+}
+
+/* Dashboard Metric Cards */
+.stat-card {
+    border-radius: 0.85rem;
+    border: none;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* POS Specific Styling */
+.pos-container {
+    height: calc(100vh - 120px);
+    min-height: 600px;
+}
+
+@media (max-width: 991.98px) {
+    .pos-container {
+        height: auto;
+        min-height: auto;
+    }
+}
+
+.pos-products-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.pos-cart-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--card-shadow-lg);
+    overflow: hidden;
+}
+
+.cart-items-scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 380px);
+}
+
+@media (max-width: 991.98px) {
+    .cart-items-scroll {
+        max-height: 350px;
+    }
+}
+
+.products-grid-scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    padding: 0.5rem;
+}
+
+@media (max-width: 991.98px) {
+    .products-grid-scroll {
+        max-height: 450px;
+    }
+}
+
+/* Product Card in POS */
+.product-card {
+    cursor: pointer;
+    border-radius: 0.65rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.12);
+}
+
+.product-card:active {
+    transform: scale(0.98);
+}
+
+.product-thumb {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    background: #f8fafc;
+    border-top-left-radius: 0.65rem;
+    border-top-right-radius: 0.65rem;
+    padding: 8px;
+}
+
+/* Big Action Buttons (Requirement 13) */
+.btn-pos-action {
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-camera-scan {
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+    color: #ffffff;
+    border: none;
+}
+
+.btn-camera-scan:hover {
+    background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+}
+
+.btn-checkout {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+}
+
+.btn-checkout:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+/* Quantity controls */
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Camera Scanner HUD */
+.camera-viewfinder-box {
+    position: relative;
+    background: #000000;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-viewfinder-box video,
+.camera-viewfinder-box canvas,
+.camera-viewfinder-box img {
+    max-width: 100%;
+    max-height: 400px;
+    display: block;
+    object-fit: contain;
+}
+
+.scan-crosshairs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    border: 2px dashed rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.3);
+}
+
+.scan-laser-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+    animation: scanAnim 2s infinite ease-in-out;
+}
+
+@keyframes scanAnim {
+    0% { top: 10%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 90%; opacity: 0; }
+}
+
+/* Fast payment cash buttons */
+.cash-preset-btn {
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.5rem;
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+    <rect width="300" height="200" rx="12" fill="#2563EB"/>
+    <rect x="10" y="10" width="280" height="180" rx="8" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="150" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="46" text-anchor="middle" dominant-baseline="middle">🥛</text>
+    <text x="150" y="130" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">Dutch Lady</text>
+    <text x="150" y="158" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ffffff" fill-opacity="0.85" text-anchor="middle">Full Cream 1L</text>
+</svg>
